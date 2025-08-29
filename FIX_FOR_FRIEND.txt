@@ -1,0 +1,33 @@
+SOLUTION FOR "undefined reference to inputChar" ERROR
+=================================================
+
+Your friend is getting this error because they're using the inputChar function
+but the compiler can't find its implementation.
+
+QUICK FIX:
+---------
+Tell your friend to compile with:
+
+gcc i.c core/input.c -o i
+
+This will include both their code (i.c) and the input library implementation (core/input.c).
+
+PROPER INSTALLATION (RECOMMENDED):
+----------------------------------
+1. Give your friend the complete input_header folder
+2. Have them run INSTALL.bat
+3. Choose option 1 (Install for current user)
+4. Then they can compile with:
+   gcc -I"%USERPROFILE%\include" i.c -L"%USERPROFILE%\lib" -linput -o i
+
+WHAT WAS HAPPENING:
+------------------
+- The #include <input.h> only gives function declarations
+- The actual function code is in input.c or libinput.a
+- Without linking to the implementation, you get "undefined reference" errors
+
+ALTERNATIVE:
+-----------
+If they only have the .h file, they need either:
+- The input.c file (use quick fix above)
+- The libinput.a library file (install properly)
