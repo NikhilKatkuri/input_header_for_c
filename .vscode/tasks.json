@@ -1,65 +1,28 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Build with local files",
-            "type": "shell",
-            "command": "gcc",
-            "args": [
-                "${file}",
-                "core/input.c",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": ["$gcc"]
-        },
-        {
-            "label": "Build with installed library",
-            "type": "shell",
-            "command": "gcc",
-            "args": [
-                "${file}",
-                "-linput",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": ["$gcc"]
-        },
-        {
-            "label": "Test library installation",
-            "type": "shell",
-            "command": "gcc",
-            "args": [
-                "simple_test.c",
-                "-linput",
-                "-o",
-                "test.exe"
-            ],
-            "group": "test",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": ["$gcc"]
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build current C file",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "-linput"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run current exe",
+      "type": "shell",
+      "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "group": "test",
+      "dependsOn": "Build current C file"
+    }
+  ]
 }

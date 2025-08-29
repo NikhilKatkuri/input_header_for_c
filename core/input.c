@@ -21,6 +21,22 @@ char *input(const char *message, char *buffer, size_t buffer_size)
      return buffer;
 }
 
+int inputInt(const char *message)
+{
+     int value;
+     printf("%s", message);
+     if (scanf("%d", &value) != 1)
+     {
+          value = 0;
+     }
+     // clear leftover input buffer
+     int c;
+     while ((c = getchar()) != '\n' && c != EOF)
+     {
+     }
+     return value;
+}
+
 short inputShort(const char *message)
 {
      short value;
@@ -132,5 +148,3 @@ char inputChar(const char *message)
      }
      return value;
 }
-
- 

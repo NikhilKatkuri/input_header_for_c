@@ -2,11 +2,8 @@
     "configurations": [
         {
             "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/core",
-                "C:/MinGW/include",
-                "${env:USERPROFILE}/include"
+            "includePath": [ 
+                "C:/MinGW/include"
             ],
             "defines": [
                 "_DEBUG",
