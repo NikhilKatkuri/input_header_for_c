@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 title Input Library Installer
 color 0b
 cls
