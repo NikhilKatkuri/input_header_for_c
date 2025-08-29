@@ -4,71 +4,69 @@
 
 A robust, safe, and easy-to-use input library for C programming that provides type-safe input functions with automatic error handling and buffer overflow protection.
 
-## 📁 What's Inside
+## 👁️ What's Inside
 
 ```
 input_header/
 ├── core/
 │   ├── input.h          # Header file
 │   └── input.c          # Source code
-├── INSTALL.bat          # 🌟 Main installer
-├── README.md           # This file
+├── INSTALL.bat          # 🌟 Main installer for Windows
+├── INSTALL.sh           # 🌟 Installer for Linux/macOS
+├── README.md            # This file
 ```
 
 ## 🚀 Quick Start
 
 ### Step 1: Install the Library
 
-```bash 
-install.bat
+**Windows:**
+
+1. Right-click on `INSTALL.bat` and run as Administrator.
+2. Enter your MinGW path (e.g., `C:\MinGW`) when prompted.
+
+**Linux/macOS:**
+
+```bash
+chmod +x INSTALL.sh
+sudo ./INSTALL.sh
 ```
 
-### Step 2: Use in Your Programs
+### Step 2: Compile and Run
 
-```c
-#include <input.h>
-#include <stdio.h>
+```bash
+# Compile your program
+gcc file.c -o file -linput
 
-int main() {
-    char name[50];
-    input("Enter your name: ", name, sizeof(name));
+# Run your program
+./file
+```
 
-    int age = (int)inputLong("Enter your age: ");
-    float height = inputFloat("Enter your height: ");
+### Step 3: VSCode Setup (Optional)
 
-    printf("Hello %s! You are %d years old and %.2f meters tall.\n",
-           name, age, height);
-    return 0;
+1. Press Ctrl + Shift + P → `Preferences: Open User Settings (JSON)`.
+2. Add/replace `code-runner.executorMap` for C:
+
+```json
+"c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe -linput && ./$fileNameWithoutExt.exe"
+```
+
+3. Associate `input.h` in `.vscode/settings.json`:
+
+```json
+{
+     "files.associations": {
+          "input.h": "c"
+     }
 }
 ```
-
-### Step 3: Compile and Run
-
-```bash
-# Using the provided script
-compile.bat myprogram.c
-
-# Test your installation
-cd test
-run_tests.bat
-
-```JSON
-# vscode setup
-
-ctrl + shift + p
-```bash
-    preferences: open User Settings (JSON)
-    "code-runner.executorMap": {
-    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe -linput && ./$fileNameWithoutExt.exe"
-    }
-````
 
 ## 📚 Available Functions
 
 | Function            | Purpose                             | Return Value               |
 | ------------------- | ----------------------------------- | -------------------------- |
 | `input()`           | String input with buffer protection | Pointer to string          |
-| `inputInt()`       | Integer input                       | int (0 on error)          |
+| `inputInt()`        | Integer input                       | int (0 on error)           |
 | `inputShort()`      | Short integer input                 | short (0 on error)         |
 | `inputLong()`       | Long integer input                  | long (0 on error)          |
 | `inputLongLong()`   | Long long integer input             | long long (0 on error)     |
@@ -79,20 +77,20 @@ ctrl + shift + p
 
 ## ✅ Features
 
-- **🛡️ Buffer Overflow Protection** - Safe string input with size limits
-- **🔧 Automatic Error Handling** - Returns sensible defaults on invalid input
-- **🧹 Input Buffer Cleaning** - Prevents input buffer issues
-- **📖 Comprehensive Documentation** - Professional Doxygen-style comments
-- **🎯 Type Safety** - Dedicated functions for each data type
-- **🚀 Easy Integration** - Simple include and link process
+* **🛡️ Buffer Overflow Protection** - Safe string input with size limits
+* **🔧 Automatic Error Handling** - Returns sensible defaults on invalid input
+* **🧹 Input Buffer Cleaning** - Prevents input buffer issues
+* **🔖 Comprehensive Documentation** - Professional Doxygen-style comments
+* **🎯 Type Safety** - Dedicated functions for each data type
+* **🚀 Easy Integration** - Simple include and link process
 
 ## 🔧 System Requirements
 
-- **Compiler**: GCC (MinGW on Windows)
-- **OS**: Windows (with PowerShell)
-- **Dependencies**: Standard C library only
+* **Compiler**: GCC (MinGW on Windows)
+* **OS**: Windows / Linux / macOS
+* **Dependencies**: Standard C library only
 
-## 📝 Example Usage
+## 📖 Example Usage
 
 ### Basic Input
 
@@ -115,34 +113,32 @@ if (age <= 0) {
 ```c
 char choice = inputChar("Select option (A/B/C): ");
 switch(choice) {
-    case 'A': case 'a': /* Handle option A */ break;
-    case 'B': case 'b': /* Handle option B */ break;
-    case 'C': case 'c': /* Handle option C */ break;
+    case 'A': case 'a': break;
+    case 'B': case 'b': break;
+    case 'C': case 'c': break;
     default: printf("Invalid option!\n");
 }
 ```
 
-## 🐛 Error Handling
+## 💡 Error Handling
 
-All functions handle errors gracefully:
-
-- **String input**: Returns empty string on failure
-- **Numeric input**: Returns 0 (or 0.0) on invalid input
-- **Character input**: Returns null character '\0' on failure
-- **Buffer cleaning**: Automatic cleanup prevents input buffer issues
+* **String input**: Returns empty string on failure
+* **Numeric input**: Returns 0 (or 0.0) on invalid input
+* **Character input**: Returns null character '\0' on failure
+* **Buffer cleaning**: Automatic cleanup prevents input buffer issues
 
 ## 🔄 Version Information
 
-- **Version**: 1.0.0
-- **Author**: NikhilKatkuri
-- **Date**: August 29, 2025
-- **Status**: Production Ready
+* **Version**: 1.0.0
+* **Author**: NikhilKatkuri
+* **Date**: August 29, 2025
+* **Status**: Production Ready
 
-## 📄 License
+## 📝 License
 
 This library is free to use for educational and personal projects.
 
-## 🆘 Troubleshooting
+## 🛠️ Troubleshooting
 
 ### Compilation Issues
 
@@ -152,7 +148,7 @@ This library is free to use for educational and personal projects.
 
 ### Runtime Issues
 
-1. Verify library installation with test program
+1. Verify library installation with a test program
 2. Check buffer sizes for string inputs
 3. Validate input ranges for numeric types
 
