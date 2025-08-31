@@ -1,5 +1,5 @@
 # Input Library - Professional C Input Handling
-
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## 📋 Overview
 
 A robust, safe, and easy-to-use input library for C programming that provides type-safe input functions with automatic error handling and buffer overflow protection.
